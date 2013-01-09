@@ -3,7 +3,7 @@
 # Install everything from pkg_dir
 cp -a $pkg_dir/* $app_dir/
 
-
+app_command=$(cat Procfile | grep web | awk -F 'web:' ' { print $2 }' )
 
 # write the start control file:
 cat > "$control_dir/start" << EOF
@@ -13,9 +13,9 @@ cd $app_dir
 export PORT=$app_port
 export $(cat $app_dir/.genapp/control/env)
 
-app_command=$(cat Procfile | grep web | awk -F ':' ' { print $2 }' )
  
 echo "The app command will be: $app_command"
+
 
 exec $app_command
 EOF
