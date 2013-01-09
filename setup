@@ -13,7 +13,7 @@ cd $app_dir
 export PORT=$app_port
 export $(cat $app_dir/.genapp/control/env)
 
-app_command=$(cat $app_dir/Procfile | grep web | awk -F ':' ' { print $2 }' )
+app_command=$(cat Procfile | grep web | awk -F ':' ' { print $2 }' )
  
 echo "The app command will be: $app_command"
 
