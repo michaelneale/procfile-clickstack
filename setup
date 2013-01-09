@@ -3,38 +3,24 @@
 # Install everything from pkg_dir
 cp -a $pkg_dir/* $app_dir/
 
-node_version=node-v0.8.16-linux-x64
+app_command=$(shell cat $app_dir/Procfile | grep web | awk -F ':' ' { print $$2 }' )
 
 
 # write the start control file:
 cat > "$control_dir/start" << EOF
 #!/bin/sh
 cd $app_dir
-export PATH=$app_dir/node/bin:\$PATH
+
 export PORT=$app_port
 export $(cat $app_dir/.genapp/control/env)
 
-
-exec node \${main_js-main.js}
+exec $app_command
 EOF
 
 # start must be executable
 chmod 755 "$control_dir/start"
 
-
-#set up local node.js version
-cd $app_dir
-tar xf $plugin_dir/$node_version.tar.gz
-rm -rf node
-mv $node_version node
-
-#install any packages if we need to
-if [ -e package.json ]
-then
- ./node/bin/npm install
-fi
-
-
+# own the app directory, why not, it's fun
 chmod -R g+w $app_dir
 
 

@@ -1,5 +1,5 @@
-plugin_name = nodejs-plugin-0.8.16
-pkg_files = LICENCE setup node-v0.8.16-linux-x64.tar.gz
+plugin_name = procfile-plugin-0.1.1
+pkg_files = LICENCE setup 
 
 include plugin.mk
 
