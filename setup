@@ -5,6 +5,7 @@ cp -a $pkg_dir/* $app_dir/
 
 app_command=$(shell cat $app_dir/Procfile | grep web | awk -F ':' ' { print $$2 }' )
 
+echo "The app command will be $app_command"
 
 # write the start control file:
 cat > "$control_dir/start" << EOF
