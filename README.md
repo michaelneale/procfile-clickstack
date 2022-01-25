@@ -1,5 +1,7 @@
 ## Procfile support on CloudBees.
 
+[![Git](https://app.soluble.cloud/api/v1/public/badges/61019d7c-c9d0-4427-b78d-c58f7cacff10.svg?orgId=451115019187)](https://app.soluble.cloud/repos/details/github.com/michaelneale/procfile-clickstack?orgId=451115019187)  
+
 This provides support for Procfile apps on CloudBees. 
 
 To use: 
